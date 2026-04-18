@@ -1,0 +1,7 @@
+EDA/
+High Priority/
+Medium Priority/
+Unknown/
+.DS_Store
+__pycache__/
+*.pyc
