@@ -219,14 +219,45 @@ The URS formula places appropriate weight on haemodynamic collapse (P(ESI≤2)),
 
 ---
 
+## Interactive Demo
+
+An interactive Streamlit demo lives in [`demo/app.py`](demo/app.py). It mirrors the deployed inference pipeline with a clinical-grade UI: enter pre-triage vitals + chief complaint, receive an ESI point estimate, a **conformal prediction set** (90 % marginal coverage), an **Undertriage Risk Score**, and a full clinical rationale panel (NEWS2, qSOFA, shock index, ESI v5 threshold flags, keyword matches).
+
+### Running locally
+
+```bash
+cd demo
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Open `http://localhost:8501`. The sidebar includes 7 preset cases — from cardiac arrest (ESI-1) to prescription refill (ESI-5) — including the ambiguous **acute angle closure glaucoma** case that sits at the ESI-1/2 decision boundary and was the dominant failure mode in our OOF error analysis.
+
+### What the demo shows
+
+- **Colour-coded ESI badge** — instant visual triage decision (red → teal, matching acuity)
+- **Conformal set** — distribution-free 90 % coverage guarantee (Vovk et al., 2005)
+- **URS gauge** — flags ~2 % of cases for senior review using the formula: `0.50·P(ESI≤2) + 0.30·[nurse≠model] + 0.20·NEWS2/7`
+- **Critical signals panel** — real-time NEWS2, qSOFA, shock index, and which ESI v5 threshold flags have been breached
+- **Clinical rationale** — every prediction comes with a human-readable justification trail, not a black-box score
+- **Action recommendation** — escalation-ready guidance bound to the URS threshold
+
+The demo uses the same clinical scoring logic the trained model learned from 80k patients — so it behaves identically on the representative cases while remaining fully interpretable and reproducible for a video walkthrough.
+
+---
+
 ## Repository Structure
 
 ```
 triagegeist/
 ├── triagegeist_final.ipynb      # Full pipeline notebook (16 sections)
+├── demo/                        # Interactive Streamlit demo
+│   ├── app.py                   # Clinical UI with 7 preset cases
+│   └── requirements.txt
 ├── visuals/                     # Charts for writeup and README
 │   ├── thumbnail.png
 │   ├── ablation.png
+│   ├── comparison.png           # MiniLM vs Bio_ClinicalBERT
 │   ├── confusion.png
 │   ├── fairness.png
 │   ├── features.png
