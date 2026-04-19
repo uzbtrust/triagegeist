@@ -225,6 +225,12 @@ The URS formula places appropriate weight on haemodynamic collapse (P(ESI≤2)),
 
 **[▶ Watch on YouTube](https://youtu.be/jtlOJ7uYQHU)** &nbsp;·&nbsp; **[🚀 Live Demo on HuggingFace Spaces](https://huggingface.co/spaces/uzbtrust/triagegeist)**
 
+### Deployed Demo Screenshots
+
+| ESI-1 Cardiac Arrest | ESI-2 Ambiguous Case |
+|---|---|
+| ![Demo sample 1](demo/web_sample1.jpg) | ![Demo sample 2](demo/web_sample2.jpg) |
+
 An interactive Streamlit demo lives in [`demo/app.py`](demo/app.py). It mirrors the deployed inference pipeline with a clinical-grade UI: enter pre-triage vitals + chief complaint, receive an ESI point estimate, a **conformal prediction set** (90 % marginal coverage), an **Undertriage Risk Score**, and a full clinical rationale panel (NEWS2, qSOFA, shock index, ESI v5 threshold flags, keyword matches).
 
 ### Running locally
@@ -257,7 +263,9 @@ triagegeist/
 ├── triagegeist_final.ipynb      # Full pipeline notebook (16 sections)
 ├── demo/                        # Interactive Streamlit demo
 │   ├── app.py                   # Clinical UI with 7 preset cases
-│   └── requirements.txt
+│   ├── requirements.txt
+│   ├── web_sample1.jpg          # Deployed demo screenshot (ESI-1)
+│   └── web_sample2.jpg          # Deployed demo screenshot (ESI-2)
 ├── visuals/                     # Charts for writeup and README
 │   ├── thumbnail.png
 │   ├── ablation.png
