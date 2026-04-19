@@ -221,6 +221,8 @@ The URS formula places appropriate weight on haemodynamic collapse (P(ESI≤2)),
 
 ## Interactive Demo
 
+**[▶ Watch demo video](demo/demo_compressed.mp4)**
+
 An interactive Streamlit demo lives in [`demo/app.py`](demo/app.py). It mirrors the deployed inference pipeline with a clinical-grade UI: enter pre-triage vitals + chief complaint, receive an ESI point estimate, a **conformal prediction set** (90 % marginal coverage), an **Undertriage Risk Score**, and a full clinical rationale panel (NEWS2, qSOFA, shock index, ESI v5 threshold flags, keyword matches).
 
 ### Running locally
