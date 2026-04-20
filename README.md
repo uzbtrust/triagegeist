@@ -293,23 +293,25 @@ Dominant pattern: **acute angle closure glaucoma** — ESI-1/2 boundary. Conflic
 
 ## Interactive Demo
 
-[![Demo Video](https://img.youtube.com/vi/jtlOJ7uYQHU/maxresdefault.jpg)](https://youtu.be/jtlOJ7uYQHU)
+[![Demo Video](https://img.youtube.com/vi/sMdNPuAW8QQ/maxresdefault.jpg)](https://youtu.be/sMdNPuAW8QQ)
 
-**[▶ Watch on YouTube](https://youtu.be/jtlOJ7uYQHU)** &nbsp;·&nbsp; **[🚀 Live Demo on HuggingFace Spaces](https://huggingface.co/spaces/uzbtrust/triagegeist)**
+**[▶ Watch on YouTube](https://youtu.be/sMdNPuAW8QQ)** &nbsp;·&nbsp; **[🚀 Live Demo on HuggingFace Spaces](https://huggingface.co/spaces/uzbtrust/triagegeist)**
 
-### Deployed Demo Screenshots
+### Deployed Demo — Severe Sepsis (ESI-1, URS = 0.700)
 
-| ESI-1 Cardiac Arrest | ESI-2 Ambiguous Case |
-|---|---|
-| ![Demo sample 1](demo/web_sample1.jpg) | ![Demo sample 2](demo/web_sample2.jpg) |
+| Input form | Prediction + Feature Impact | Critical signals + Action |
+|---|---|---|
+| ![Demo 1](demo/demo1.jpg) | ![Demo 2](demo/demo2.jpg) | ![Demo 3](demo/demo3.jpg) |
+
+The severe sepsis preset (age 72, SBP 85, SpO₂ 88%, RR 28, NEWS2 = 16) triggers ESI-1 with URS = 0.700 — above the 0.5 flag threshold — and the system correctly escalates: **"Escalate to senior clinician. Review conformal set before disposition."**
 
 An interactive Streamlit demo lives in [`demo/app.py`](demo/app.py). Enter pre-triage vitals + chief complaint and receive:
 
 - **ESI badge** — colour-coded triage decision (red → teal)
-- **Feature Impact panel** — SHAP-inspired breakdown of which signals drove the prediction
+- **Feature Impact panel** — SHAP-inspired breakdown: NEWS2 (+3.50), NLP (+2.50), ESI flags (+2.00), qSOFA (+1.20)
 - **Conformal set** — 90 % marginal coverage guarantee (Vovk et al. 2005)
 - **URS gauge** — flags ~2 % of cases for senior review
-- **NEWS2 · qSOFA · shock index** — live clinical scores
+- **NEWS2 · qSOFA · shock index** — live clinical scores with breach alerts
 - **Clinical rationale** — human-readable justification trail
 
 ### Running locally
